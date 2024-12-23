@@ -1,0 +1,145 @@
+﻿@model List<WebApplication1.Models.Timetable>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Blue to Purple gradient background */
+            font-family: 'Arial', sans-serif;
+            color: #ecf0f1;
+        }
+
+        .container {
+            margin-top: 50px;
+            background: #f5f6fa; /* Light grayish color for the container */
+            color: #2c3e50; /* Dark text for better readability */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 6px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50; /* Dark color for the header */
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            background-color: #34495e; /* Darker background for the table */
+        }
+
+        th {
+            background: #2d3e50; /* Darker shade for table headers */
+            color: white;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #ecf0f1; /* Light hover effect for rows */
+            transition: background-color 0.3s ease;
+        }
+
+        td, th {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-secondary {
+            background-color: #3498db; /* Blue for secondary button */
+            border-color: #3498db;
+            color: white;
+        }
+
+            .btn-secondary:hover {
+                background-color: #2980b9;
+                border-color: #2471a3;
+            }
+
+        .btn-back {
+            background-color: #e74c3c; /* Red for back button */
+            border-color: #e74c3c;
+            color: white;
+        }
+
+            .btn-back:hover {
+                background-color: #c0392b;
+                border-color: #a93226;
+            }
+
+        .text-end a {
+            font-weight: bold;
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+
+        /* Make the table responsive */
+        .table-responsive {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Timetable</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Subject</th>
+                        <th>Time</th>
+                        <th>Teacher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Day</td>
+                            <td>@item.Subject</td>
+                            <td>@item.Time</td>
+                            <td>@item.Teacher</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Edit button placed below the table -->
+        <div class="text-center mt-3">
+            <a href="@Url.Action("Edit", "TimeTable")" class="btn btn-secondary">
+                <i class="fa-solid fa-pen icon"></i>Edit Timetable
+            </a>
+        </div>
+
+        <!-- Back button at the bottom -->
+        <div class="text-center mt-3">
+            <a href="@Url.Action("AdminDetails", "Admin")" class="btn btn-back">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </div>
+</body>
+</html>

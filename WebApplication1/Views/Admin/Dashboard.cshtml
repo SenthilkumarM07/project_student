@@ -1,0 +1,121 @@
+﻿
+@model WebApplication1.Models.Admin
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #264653, #2a9d8f, #e9c46a);
+            color: #ffffff;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-container {
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+            color: #f4a261;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .dashboard-action {
+            margin-bottom: 25px;
+        }
+
+        .btn-action, .btn-logout {
+            width: 100%;
+            padding: 15px;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-action {
+            background-color: #2a9d8f; /* Teal */
+        }
+
+        .btn-action:hover {
+            background-color: #1d7874; /* Dark Teal */
+            box-shadow: 0px 8px 20px rgba(42, 157, 143, 0.7);
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .btn-logout {
+            background-color: #e63946; /* Red */
+            margin-top: 20px;
+        }
+
+        .btn-logout:hover {
+            background-color: #d62828; /* Dark Red */
+            box-shadow: 0px 8px 20px rgba(230, 57, 70, 0.7);
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .icon-margin {
+            margin-right: 10px;
+        }
+
+        /* Responsive Design */
+        @@media (max-width: 768px) {
+            .dashboard-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-container">
+            <h1><i class="fas fa-tachometer-alt"></i> Admin Dashboard</h1>
+
+            <!-- View Student Details Button -->
+            <div class="dashboard-action">
+                <a href="@Url.Action("Details", "Student")" class="btn-action">
+                    <i class="fas fa-users icon-margin"></i> View Student Details
+                </a>
+            </div>
+
+            <!-- View Admin Details Button -->
+            <div class="dashboard-action">
+                <a href="@Url.Action("AdminDetails", "Admin")" class="btn-action">
+                    <i class="fas fa-user-shield icon-margin"></i> View Admin Details
+                </a>
+            </div>
+
+            <!-- Logout Button -->
+            <div class="dashboard-action">
+                <a href="@Url.Action("Logout", "Login")" class="btn-logout">
+                    <i class="fas fa-sign-out-alt icon-margin"></i> Logout
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

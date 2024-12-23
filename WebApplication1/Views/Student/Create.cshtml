@@ -1,0 +1,155 @@
+﻿@model WebApplication1.Models.Student
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        body {
+            background-color: #c5e1a5; /* Soft light green background for the entire page */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .top-header {
+            background-color: #388e3c; /* Darker green background for the header */
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            margin-top: 30px;
+            background-color: #ffffff; /* White background for the form */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            color: #ff6f61;
+            margin-bottom: 25px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #ff6f61, #ff9a76);
+            border: none;
+        }
+
+            .btn-primary:hover {
+                background: linear-gradient(to right, #ff4e4e, #ff6f61);
+            }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+            .btn-secondary:hover {
+                background-color: #5a6268;
+                border-color: #545b62;
+            }
+
+        .form-label {
+            font-weight: bold;
+            color: #333333;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .text-danger {
+            font-size: 0.9em;
+        }
+
+        .icon {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <i class="fa-solid fa-user-graduate"></i> Create Student
+    </div>
+
+    <div class="container">
+        @using (Html.BeginForm("Create", "Student", FormMethod.Post))
+        {
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Name, new { @class = "form-label" })
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-user icon"></i></span>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Enter name" })
+                </div>
+                @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Age, new { @class = "form-label" })
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-calendar-day icon"></i></span>
+                    @Html.TextBoxFor(m => m.Age, new { @class = "form-control", type = "number", placeholder = "Enter age" })
+                </div>
+                @Html.ValidationMessageFor(m => m.Age, null, new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Department, new { @class = "form-label" })
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-building icon"></i></span>
+                    @Html.TextBoxFor(m => m.Department, new { @class = "form-control", placeholder = "Enter department" })
+                </div>
+                @Html.ValidationMessageFor(m => m.Department, null, new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Gender, new { @class = "form-label" })
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-venus-mars icon"></i></span>
+                    @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Male", "Female", "Other" }), "Select Gender", new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(m => m.Gender, null, new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Course, new { @class = "form-label" })
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-book icon"></i></span>
+                    @Html.TextBoxFor(m => m.Course, new { @class = "form-control", placeholder = "Enter course name" })
+                </div>
+                @Html.ValidationMessageFor(m => m.Course, null, new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.PhoneNumber, new { @class = "form-label" })
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-phone icon"></i></span>
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", type = "tel", placeholder = "Enter phone number" })
+                </div>
+                @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(m => m.Email, new { @class = "form-label" })
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-envelope icon"></i></span>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter email address" })
+                </div>
+                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Submit
+                </button>
+                <a href="@Url.Action("Details", "Student")" class="btn btn-secondary">
+                    <i class="fa-solid fa-times"></i> Cancel
+                </a>
+            </div>
+        }
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<WebApplication1.Models.Timetable>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc); /* Vibrant blue-purple gradient */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Table Header Styling */
+        .table th {
+            background-color: #ff7e5f;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Table Row Styling */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f7c8c8; /* Light pink for odd rows */
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f4f4f9; /* Light gray for even rows */
+        }
+
+        /* Hover Effect for Table Rows */
+        .table tbody tr:hover {
+            background-color: #ffe156; /* Light yellow for hover */
+            cursor: pointer;
+        }
+
+        .btn-timetable {
+            background-color: #6c63ff; /* Purple for timetable button */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .btn-timetable:hover {
+                background-color: #574b90;
+                box-shadow: 0px 8px 20px rgba(108, 99, 255, 0.6);
+                transform: scale(1.05);
+            }
+
+        .btn i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><i class="fas fa-calendar-alt"></i> Timetable</h2>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Subject</th>
+                    <th>Time</th>
+                    <th>Teacher</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Day</td>
+                        <td>@item.Subject</td>
+                        <td>@item.Time</td>
+                        <td>@item.Teacher</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="@Url.Action("Dashboard", "Student")" class="btn btn-timetable">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+    </div>
+
+</body>
+</html>

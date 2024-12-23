@@ -1,0 +1,177 @@
+﻿@model IEnumerable<WebApplication1.Models.Admin>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Soft warm gradient */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+        }
+
+        .container {
+            margin-top: 60px;
+            background: #ffffff; /* Light background for the container */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333333; /* Dark gray for the header for good contrast */
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        table {
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .btn-create, .btn-edit, .btn-delete, .btn-post, .btn-timetable {
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Button Color Adjustments */
+        .btn-create {
+            background-color: #28a745;
+            color: white;
+        }
+
+            .btn-create:hover {
+                background-color: #218838;
+                box-shadow: 0px 8px 20px rgba(40, 167, 69, 0.6);
+                transform: scale(1.05);
+            }
+
+        .btn-edit {
+            background-color: #ffbc00; /* Warm yellow for editing */
+            color: white;
+        }
+
+            .btn-edit:hover {
+                background-color: #e0a800;
+                box-shadow: 0px 8px 20px rgba(255, 193, 7, 0.6);
+                transform: scale(1.05);
+            }
+
+        .btn-delete {
+            background-color: #e63946; /* Soft red for delete */
+            color: white;
+        }
+
+            .btn-delete:hover {
+                background-color: #d62828;
+                box-shadow: 0px 8px 20px rgba(230, 57, 70, 0.6);
+                transform: scale(1.05);
+            }
+
+        .btn-post {
+            background-color: #17a2b8; /* Teal for post notes */
+            color: white;
+        }
+
+            .btn-post:hover {
+                background-color: #138496;
+                box-shadow: 0px 8px 20px rgba(23, 162, 184, 0.6);
+                transform: scale(1.05);
+            }
+
+        .btn-timetable {
+            background-color: #6c63ff; /* Purple for timetable */
+            color: white;
+        }
+
+            .btn-timetable:hover {
+                background-color: #574b90;
+                box-shadow: 0px 8px 20px rgba(108, 99, 255, 0.6);
+                transform: scale(1.05);
+            }
+
+        /* Icons in Buttons */
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .text-end a {
+            margin-left: 15px;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+        }
+
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2><i class="fas fa-users-cog"></i> Admin List</h2>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var admin in Model)
+                {
+                    <tr>
+                        <td>@admin.Id</td>
+                        <td>@admin.UserName</td>
+                        <td>
+                            <!-- Edit Button with Icon -->
+                            <a href="@Url.Action("EditAdmin", "Admin", new { id = admin.Id })" class="btn btn-edit">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <!-- Delete Button with Icon -->
+                            <a href="@Url.Action("DeleteAdmin", "Admin", new { id = admin.Id })" class="btn btn-delete">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- Create timetable Button -->
+        <div class="text-end">
+            <a href="@Url.Action("CreateAdmin", "Admin")" class="btn btn-create">
+                <i class="fas fa-plus"></i> Create New Admin
+            </a>
+            <a href="@Url.Action("Upload", "Document")" class="btn btn-post">Post Notes</a>
+            <a href="@Url.Action("AdminView", "TimeTable")" class="btn btn-timetable">Time Table</a>
+        </div>
+        <div class="text-center mt-3">
+            <a href="@Url.Action("Dashboard", "Admin")" class="btn btn-timetable">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

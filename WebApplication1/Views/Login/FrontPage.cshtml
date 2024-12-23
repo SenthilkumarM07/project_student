@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #264653, #2a9d8f, #e9c46a);
+            color: #ffffff;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            margin-top: 100px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #f4a261;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #f1faee;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .btn-student, .btn-admin {
+            width: 220px;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-student {
+            background-color: #2a9d8f;
+            box-shadow: 0px 5px 10px rgba(42, 157, 143, 0.5);
+        }
+
+            .btn-student:hover {
+                background-color: #1d7874;
+                box-shadow: 0px 8px 20px rgba(29, 120, 116, 0.7);
+                cursor: pointer;
+            }
+
+        .btn-admin {
+            background-color: #e76f51;
+            box-shadow: 0px 5px 10px rgba(231, 111, 81, 0.5);
+        }
+
+            .btn-admin:hover {
+                background-color: #d64535;
+                box-shadow: 0px 8px 20px rgba(214, 69, 53, 0.7);
+                cursor: pointer;
+            }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #e9c46a;
+        }
+
+            footer a {
+                color: #ffffff;
+                text-decoration: none;
+                font-weight: bold;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <i class="fas fa-school"></i> Student Management System
+        </h1>
+        <p>Select your login portal to continue</p>
+        <div class="btn-group">
+            <a href="@Url.Action("LoginStudent", "Login")" class="btn btn-student">
+                <i class="fas fa-user-graduate"></i> Student Login
+            </a>
+            <a href="@Url.Action("LoginAdmin", "Login")" class="btn btn-admin">
+                <i class="fas fa-user-shield"></i> Admin Login
+            </a>
+        </div>
+    </div>
+    <footer class="text-center">
+        <p>
+            &copy; 2024 Student Management System. All Rights Reserved. |
+            <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+        </p>
+    </footer>
+</body>
+</html>

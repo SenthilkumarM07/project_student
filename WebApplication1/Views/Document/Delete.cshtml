@@ -1,0 +1,24 @@
+﻿@model WebApplication1.Models.DocumentModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Delete Document</h1>
+        <p>Are you sure you want to delete the document titled "<strong>@Model.Title</strong>"?</p>
+        <form action="" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="@Url.Action("AdminIndex", "Document")" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
+
+

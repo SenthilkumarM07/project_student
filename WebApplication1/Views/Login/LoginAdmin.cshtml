@@ -1,0 +1,154 @@
+﻿@model WebApplication1.Models.Admin
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #264653, #2a9d8f, #e9c46a);
+            color: #ffffff;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-container {
+            margin: 50px auto;
+            max-width: 400px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #f4a261;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #f1faee;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: none;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .form-control:focus {
+                border: none;
+                outline: none;
+                box-shadow: 0 0 10px rgba(42, 157, 143, 0.5);
+            }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: #2a9d8f;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+            .btn-login:hover {
+                background-color: #1d7874;
+                box-shadow: 0px 8px 20px rgba(42, 157, 143, 0.7);
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+
+        .btn-back {
+            margin-top: 10px;
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background-color: #e63946;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+            .btn-back:hover {
+                background-color: #d62828;
+                box-shadow: 0px 8px 20px rgba(230, 57, 70, 0.7);
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+            .form-footer a {
+                color: #f1faee;
+                text-decoration: none;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+            }
+
+                .form-footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1><i class="fas fa-user-shield"></i> Admin Login</h1>
+            @using (Html.BeginForm("LoginAdmin", "Login", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="UserName"><i class="fas fa-user"></i> Username</label>
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "Enter Username" })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group mt-3">
+                    <label for="Password"><i class="fas fa-lock"></i> Password</label>
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Enter Password" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group mt-4">
+                    <button type="submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                </div>
+                <a href="@Url.Action("FrontPage", "Login")" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            }
+        </div>
+    </div>
+</body>
+</html>
+
